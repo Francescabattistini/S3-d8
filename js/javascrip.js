@@ -1,13 +1,11 @@
-const taskMaker = document.getElementById("myForm");
+const taskMaker = document.getElementById("task-maker");
 
 // logica per la to-do list e per il task-maker
 taskMaker.addEventListener("submit", function (event) {
   event.preventDefault();
-
   const customTask = document.getElementById("custom-task");
   const list = document.getElementById("list");
   // create elements
-
   const div = document.createElement("div");
   const check = document.createElement("input");
   check.type = "checkbox";
@@ -22,7 +20,6 @@ taskMaker.addEventListener("submit", function (event) {
   task.addEventListener("click", function (event) {
     task.classList.toggle("crossed");
   });
-
   // rende la prima lettera della task maiuscola di default
   const upperCase =
     customTask.value.slice(0, 1).toUpperCase() + customTask.value.slice(1);
@@ -39,5 +36,3 @@ taskMaker.addEventListener("submit", function (event) {
 });
 
 const header = document.getElementsByTagName("header")[0];
-
-header.appendChild(randomMotivation());

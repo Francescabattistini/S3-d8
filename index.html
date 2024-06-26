@@ -1,40 +1,38 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>To Do List</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>To-Do List</title>
   </head>
   <body>
     <header>
       <h1>To-Do List</h1>
     </header>
     <main>
-      /////////////////////////
       <section>
-        <form id="myForm">
-          <label for="creazione-form" class="block">Crea il tuo Task !</label>
+        <form id="task-maker">
+          <label for="custom-task" class="block">Create your Task!</label>
           <input
             type="text"
-            name="creazione-form"
-            placeholder="scrivi il tuo Task"
-            id="creazione-form"
+            name="custom-task"
+            placeholder="Write your task"
+            id="custom-task"
             maxlength="25"
             required
             autofocus
           />
-          <button id="add">add</button>
+          <button id="add">Add</button>
         </form>
       </section>
-      /////////////////////////
-      <section id="lista-container">
-        <h2>Il tuo Task :</h2>
-        <article id="lista"></article>
+      <section id="list-container">
+        <h2>Your Tasks:</h2>
+        <article id="list"></article>
       </section>
-      /////////////////////////
     </main>
     <footer></footer>
-    <script src="js/javascrip.js"></script>
+    <script src="assets/script/script.js"></script>
   </body>
 </html>
