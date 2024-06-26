@@ -11,7 +11,8 @@ body {
   text-align: center;
   box-sizing: border-box;
   background-color: rgba(198, 252, 244, 0.901);
-  background-image: url(../assets/img/futuristic-home-8397004_1920.jpg);
+  background-image: url(../assets/img/download.jpg);
+  background-position: right;
 }
 
 header {
@@ -110,14 +111,6 @@ footer {
   cursor: pointer;
 }
 
-.fade-out {
-  animation: fadeIn 1s;
-  -webkit-animation: fadeIn 1s;
-  -moz-animation: fadeIn 1s;
-  -o-animation: fadeIn 1s;
-  -ms-animation: fadeIn 1s;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 1;
@@ -125,4 +118,12 @@ footer {
   100% {
     opacity: 0;
   }
+}
+
+.fade-out {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
 }
