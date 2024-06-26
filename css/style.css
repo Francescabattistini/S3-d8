@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: rgba(198, 252, 244, 0.901);
+  background-image: url(../assets/img/futuristic-home-8397004_1920.jpg);
+}
+
+header {
+  display: inline-block;
+  padding-top: 2em;
+  margin: 5em auto auto auto;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: white;
+  min-width: 12em;
+}
+
+header p {
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.1em;
+}
+
+#task-maker {
+  margin: 1em;
+  display: inline-block;
+  width: 12em;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+#task-maker label {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+#custom-task {
+  border: 1px solid rgba(0, 0, 0, 0.333);
+  border-radius: 5px;
+}
+
+#add {
+  border: 1px solid rgba(0, 0, 0, 0.333);
+  border-radius: 5px;
+  width: auto;
+  overflow: visible;
+  background: white;
+}
+
+#list-container {
+  display: inline-block;
+  width: 12em;
+  margin: auto;
+  text-align: left;
+  text-align: left;
+  border-radius: 10px;
+  background-color: white;
+  padding: 1em;
+}
+
+h2 {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+#list-container div {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 5px 6px 6px 1px rgba(0, 0, 0, 0.063);
+  padding: 0.1em;
+  margin-bottom: 0.5em;
+}
+
+#list-container p:hover {
+  cursor: pointer;
+}
+
+footer {
+  height: 5em;
+}
+
+.inline {
+  display: inline;
+  margin-left: 0;
+}
+
+.block {
+  display: block;
+}
+
+.crossed {
+  text-decoration: line-through;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.fade-out {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
