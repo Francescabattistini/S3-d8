@@ -1,15 +1,36 @@
-const taskMaker = document.getElementById("task-maker");
+// richiamare gli elementi
+const divPadreTask = document.getElementById("task-maker");
+const valoreTestoBox = document.getElementById("custom-task");
+const contenitoreList = document.getElementById("list");
 
-// logica per la to-do list e per il task-maker
-taskMaker.addEventListener("submit", function (event) {
+divPadreTask.addEventListener("submit", function (event) {
   event.preventDefault();
-  // ho preso gli elementi
-  const customTask = document.getElementById("custom-task");
-  const list = document.getElementById("list");
-  // ho creato gli elementi
   const div = document.createElement("div");
+  const task = CreaTask();
+  const check = creaCheck();
+  div.append(check, task);
+  contenitoreList.append(div);
+  divPadreTask.reset();
+});
+
+function CreaTask() {
+  const task = document.createElement("p");
+  task.classList.add("task");
+  task.addEventListener("click", function (event) {
+    task.classList.toggle("crossed");
+  });
+  const primaLetteraMaiuscola =
+    valoreTestoBox.value.slice(0, 1).toUpperCase() +
+    valoreTestoBox.value.slice(1);
+
+  task.innerText = primaLetteraMaiuscola;
+
+  task.classList.add("inline");
+  return task;
+}
+
+function creaCheck() {
   const check = document.createElement("input");
-  //definisco il comportamento della check
   check.type = "checkbox";
   check.addEventListener("click", function () {
     check.parentNode.classList.add("fade-out");
@@ -17,26 +38,7 @@ taskMaker.addEventListener("submit", function (event) {
       check.parentNode.remove();
     }, 1000);
   });
-
-  // creo elemento p e ci aggiungo la classe task
-  const task = document.createElement("p");
-  task.classList.add("task");
-  //creo la linea e la disabilito al click
-  task.addEventListener("click", function (event) {
-    task.classList.toggle("crossed");
-  });
-  // rende la prima lettera della task maiuscola di default
-  const upperCase =
-    customTask.value.slice(0, 1).toUpperCase() + customTask.value.slice(1); // seleziono la prima lettera a cui fare la maiuscola ,
-  // ma poi mi toglie tutte le altre quindi gli dico dalla prima aggiungi il resto
-  task.innerText = upperCase;
-  // mette sulla stessa linea il checkbox e la task
   check.classList.add("inline");
   check.classList.add("clickable");
-  task.classList.add("inline");
-  // append elements
-  div.append(check, task);
-  list.append(div);
-  //reset form
-  taskMaker.reset();
-});
+  return check;
+}
