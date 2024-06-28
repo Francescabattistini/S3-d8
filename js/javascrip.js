@@ -1,44 +1,91 @@
-// richiamare gli elementi
-const divPadreTask = document.getElementById("task-maker");
-const valoreTestoBox = document.getElementById("custom-task");
-const contenitoreList = document.getElementById("list");
+// Parte statica
+const creoCaselle = function () {
+  const gameBoard = document.getElementById("game-board");
+  for (let i = 1; i <= 76; i++) {
+    const gameCell = document.createElement("div");
+    gameCell.classList.add("game-cell");
+    const number = document.createElement("h3");
+    number.innerText = i;
+    gameCell.appendChild(number);
+    gameBoard.appendChild(gameCell);
+  }
+};
 
-divPadreTask.addEventListener("submit", function (event) {
+const playerTabGen = function () {
+  const playerNums = [];
+  const playerZone = document.getElementById("player-zone");
+  const playerTab = document.createElement("div");
+  playerTab.classList.add("player-tab");
+  let i = 0;
+  while (i < 24) {
+    const randomNumber = Math.floor(Math.random() * 76) + 1;
+    if (!playerNums.includes(randomNumber)) {
+      const numberCell = document.createElement("div");
+      numberCell.classList.add("game-cell");
+      const number = document.createElement("h2");
+      number.classList.add("player-num");
+      number.innerText = randomNumber;
+      numberCell.appendChild(number);
+      playerTab.appendChild(numberCell);
+      playerNums.push(randomNumber);
+      i++;
+    }
+  }
+  playerZone.appendChild(playerTab);
+};
+
+window.addEventListener("DOMContentLoaded", creoCaselle());
+// Parte dinamica
+const extrBtn = document.getElementById("random-number");
+
+const randomNumbers = [];
+
+const extractNum = function () {
+  const randomNumber = Math.floor(Math.random() * 76) + 1;
+  const number = document.getElementById("number");
+  if (!randomNumbers.includes(randomNumber)) {
+    /*     number.classList.add("number");
+    number.innerHTML = "";
+    number.innerText = randomNumber;
+ */
+    const numbers = document.getElementsByClassName("game-cell");
+    const extractedNumber = numbers[randomNumber - 1];
+    extractedNumber.classList.add("extracted-number");
+
+    const playerNums = document.getElementsByClassName("player-num");
+    for (let i = 0; i < playerNums.length; i++) {
+      const currentNum = parseInt(playerNums[i].innerText);
+      if (currentNum === randomNumber) {
+        playerNums[i].parentElement.classList.add("extracted-number");
+      }
+    }
+    randomNumbers.push(randomNumber);
+  } else if (randomNumbers.length === 76) {
+    return;
+  } else {
+    return extractNum();
+  }
+};
+
+const playBtn = document.getElementById("play");
+
+playBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  const div = document.createElement("div");
-  const task = CreaTask();
-  const check = creaCheck();
-  div.append(check, task);
-  contenitoreList.append(div);
-  divPadreTask.reset();
+  const tabNum = document.getElementById("tab-num").value;
+  if (tabNum > 10) {
+    alert("Puoi avere massimo 10 tabelline!");
+    return;
+  } else {
+    const form = document.getElementById("quantita-tabelline");
+    const extrZone = document.getElementById("extraction-zone");
+    const extrBtn = document.createElement("button");
+    extrBtn.id = "random-number";
+    extrBtn.innerText = "ESTRAZIONE";
+    extrZone.appendChild(extrBtn);
+    extrBtn.addEventListener("click", extractNum);
+    for (let i = 0; i < tabNum; i++) {
+      playerTabGen();
+    }
+    form.remove(form);
+  }
 });
-
-function CreaTask() {
-  const task = document.createElement("p");
-  task.classList.add("task");
-  task.addEventListener("click", function (event) {
-    task.classList.toggle("crossed");
-  });
-  const primaLetteraMaiuscola =
-    valoreTestoBox.value.slice(0, 1).toUpperCase() +
-    valoreTestoBox.value.slice(1);
-
-  task.innerText = primaLetteraMaiuscola;
-
-  task.classList.add("inline");
-  return task;
-}
-
-function creaCheck() {
-  const check = document.createElement("input");
-  check.type = "checkbox";
-  check.addEventListener("click", function () {
-    check.parentNode.classList.add("fade-out");
-    setTimeout(function () {
-      check.parentNode.remove();
-    }, 1000);
-  });
-  check.classList.add("inline");
-  check.classList.add("clickable");
-  return check;
-}
